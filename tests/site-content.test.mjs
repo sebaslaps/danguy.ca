@@ -112,7 +112,8 @@ test('contact page recreates archived contact information and form', () => {
   assert.match(contact, /Sunday/);
   assert.match(contact, /Closed/);
   assert.doesNotMatch(contact, /Heures variables durant la saison/);
-  assert.match(contact, /Français/);
+  assert.doesNotMatch(contact, /Langues parlées/);
+  assert.doesNotMatch(contact, /<p>Français<\/p>/);
   assert.match(contact, /Sainte-Marie et les environs/);
 });
 
