@@ -47,7 +47,8 @@ test('shared layout recreates yellow black archived visual identity without Yell
   assert.match(layout, /class:list=\{\[/);
   assert.match(layout, /active/);
   assert.match(layout, /Tous droits réservés/);
-  assert.match(layout, /2020/);
+  assert.match(layout, /2026/);
+  assert.doesNotMatch(layout, /2020/);
   assert.doesNotMatch(layout, /Pages Jaunes/i);
   assert.doesNotMatch(layout, /pages-jaunes/i);
   assert.doesNotMatch(layout, /Création de/i);
@@ -60,8 +61,10 @@ test('homepage recreates archived home content and specialties without non-real 
   assert.match(home, /Excavation, terrassement et bien plus!/);
   assert.match(home, /Installations septiques éprouvées/);
   assert.match(home, /Vaste sélection de matériaux en vrac/);
-  assert.match(home, /class="service-visual excavation-visual"/);
-  assert.match(home, /class="service-visual materials-visual"/);
+  assert.match(home, /class="hero-link-row"/);
+  assert.match(home, /class="hero-link-card"/);
+  assert.doesNotMatch(home, /class="service-visual/);
+  assert.doesNotMatch(home, /excavation-visual|materials-visual/);
   assert.doesNotMatch(home, /<img\b/i);
   assert.doesNotMatch(home, /home-excavation|home-materials/i);
   for (const material of ['Pierre', 'Paillis', 'Terre', 'Sable', 'Compost', 'Fumier', 'Gravier', 'Concassé', 'Pierre décorative', 'Poussière de pierre']) {
