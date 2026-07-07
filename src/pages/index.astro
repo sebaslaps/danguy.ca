@@ -13,11 +13,18 @@ const specialties = ['Excavation', 'Terrassement', 'Installations septiques', 'L
     <div class="container">
       <p id="home-slogan" class="hero-title">NOTRE SAVOIR-FAIRE AU SERVICE DE VOS PROJETS D'EXCAVATION</p>
       <div class="home-feature-grid">
-        <a class="feature-photo" href="/services/">
-          <img src="/assets/home-excavation.svg" alt="Travaux d’excavation | Notre offre de services s’étend de l’excavation aux travaux de terrassement." />
+        <a class="service-visual excavation-visual" href="/services/" aria-label="Voir les services d'excavation">
+          <span class="visual-label">Excavation</span>
+          <span class="visual-line"></span>
+          <span class="visual-detail">Terrassement · Démolition · Drains</span>
         </a>
-        <a class="feature-card" href="/services/">
-          <img src="/assets/home-materials.png" alt="Matériaux en vrac | Nous vendons de la semence, des cœurs de portes, des ponceaux et bien plus." />
+        <a class="service-visual materials-visual" href="/services/" aria-label="Voir les matériaux en vrac">
+          <span class="visual-label">Centre de vrac</span>
+          <span class="material-chips">
+            <span>Pierre</span>
+            <span>Sable</span>
+            <span>Paillis</span>
+          </span>
         </a>
       </div>
     </div>
@@ -66,17 +73,23 @@ const specialties = ['Excavation', 'Terrassement', 'Installations septiques', 'L
     max-width: 910px;
     margin: 0 auto 66px;
   }
-  .home-feature-grid { display: grid; grid-template-columns: minmax(0, 1fr) 264px; gap: 34px; align-items: center; }
-  .feature-photo, .feature-card { display: block; text-decoration: none; }
-  .feature-photo img { width: 100%; min-height: 264px; object-fit: cover; display: block; }
-  .feature-card img { width: 264px; height: 264px; display: block; }
+  .home-feature-grid { display: grid; grid-template-columns: minmax(0, 1fr) 264px; gap: 34px; align-items: stretch; }
+  .service-visual { display: flex; flex-direction: column; justify-content: center; min-height: 264px; text-decoration: none; color: #111; border: 1px solid #e6e6e6; box-shadow: 0 1px 0 rgba(0,0,0,.08); overflow: hidden; }
+  .excavation-visual { position: relative; padding: 38px; background: linear-gradient(135deg, #f7f7f7 0%, #fff 56%, #efefef 100%); }
+  .excavation-visual::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 82px; background: linear-gradient(170deg, transparent 0 20%, #c8a061 21% 55%, #8b6835 56%); }
+  .excavation-visual::after { content: ''; position: absolute; right: 36px; bottom: 62px; width: 122px; height: 42px; border: 9px solid #111; border-left: 0; border-bottom: 0; transform: skewX(-18deg); opacity: .9; }
+  .materials-visual { gap: 18px; padding: 28px; background: #ffd400; text-align: center; }
+  .visual-label { position: relative; z-index: 1; color: #111; font-size: 1.65rem; font-weight: 900; text-transform: uppercase; }
+  .visual-line { position: relative; z-index: 1; display: block; width: 80px; height: 8px; margin-top: 18px; background: var(--yellow); }
+  .visual-detail { position: relative; z-index: 1; margin-top: 18px; max-width: 360px; font-weight: 800; color: #333; }
+  .material-chips { display: grid; gap: 9px; }
+  .material-chips span { background: #111; color: #ffd400; padding: 10px 8px; font-weight: 800; }
   .spaced { margin-top: 28px; }
   .material-list { columns: 2; max-width: 520px; margin: 0 0 22px 20px; padding: 0; }
   .material-list li { margin: 4px 0; }
   @media (max-width: 760px) {
     .home-hero { padding: 72px 0; }
     .home-feature-grid { grid-template-columns: 1fr; }
-    .feature-card img { width: 100%; max-width: 264px; margin: 0 auto; }
     .material-list { columns: 1; }
   }
 </style>

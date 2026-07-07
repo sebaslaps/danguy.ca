@@ -1,6 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import site from '../data/site.json';
+
+const hours = [
+  ['Monday', '8 a.m.-12 p.m.', '1-5 p.m.'],
+  ['Tuesday', '8 a.m.-12 p.m.', '1-5 p.m.'],
+  ['Wednesday', '8 a.m.-12 p.m.', '1-5 p.m.'],
+  ['Thursday', '8 a.m.-12 p.m.', '1-5 p.m.'],
+  ['Friday', '8 a.m.-12 p.m.', '1-5 p.m.'],
+  ['Saturday', 'Closed', ''],
+  ['Sunday', 'Closed', ''],
+];
 ---
 <BaseLayout
   title="Excavation Danguy Inc.| Sainte-Marie | Contactez-nous"
@@ -47,7 +57,14 @@ import site from '../data/site.json';
         <p><a href="mailto:info@danguy.ca">info@danguy.ca</a></p>
 
         <p class="info-title">Heures d'ouverture</p>
-        <p>Heures variables durant la saison. Veuillez communiquer avec le bureau au <a href={`tel:${site.phone.href}`}>{site.phone.display}</a> pour connaître nos heures d’ouverture.</p>
+        <dl class="hours-list">
+          {hours.map(([day, morning, afternoon]) => (
+            <div class="hours-row">
+              <dt>{day}</dt>
+              <dd>{morning}{afternoon && <><br />{afternoon}</>}</dd>
+            </div>
+          ))}
+        </dl>
 
         <h2>Langues parlées</h2>
         <p>Français</p>
@@ -61,7 +78,7 @@ import site from '../data/site.json';
 
 <style>
   .contact-page { padding-top: 82px; padding-bottom: 82px; }
-  .contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 54px; align-items: start; }
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 54px; align-items: start; }
   form { margin-top: 28px; max-width: 540px; }
   label { display: block; margin: 0 0 15px; color: #333; font-weight: 700; }
   label span { display: block; margin-bottom: 5px; }
@@ -71,6 +88,10 @@ import site from '../data/site.json';
   .contact-info { border-left: 6px solid var(--yellow); padding-left: 24px; }
   .info-title { color: #111; font-weight: 800; margin-top: 24px; margin-bottom: 4px; }
   .info-title:first-child { margin-top: 0; }
+  .hours-list { margin: 6px 0 0; }
+  .hours-row { display: grid; grid-template-columns: 105px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid #eeeeee; }
+  .hours-row dt { color: #111; font-weight: 800; }
+  .hours-row dd { margin: 0; }
   .contact-info h2 { margin-top: 34px; margin-bottom: 8px; }
   @media (max-width: 760px) {
     .contact-grid { grid-template-columns: 1fr; }

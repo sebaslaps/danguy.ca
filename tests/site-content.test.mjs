@@ -38,7 +38,7 @@ test('site data preserves archived Danguy business details', () => {
   assert.deepEqual(site.navigation.map((item) => item.label), ['Accueil', 'Services', 'Contactez-nous']);
 });
 
-test('shared layout recreates yellow black archived visual identity', () => {
+test('shared layout recreates yellow black archived visual identity without Yellow Pages credits', () => {
   const layout = read('src/layouts/BaseLayout.astro');
   assert.match(layout, /--yellow:\s*#ffd400/i);
   assert.match(layout, /class="brand-logo"/);
@@ -48,15 +48,22 @@ test('shared layout recreates yellow black archived visual identity', () => {
   assert.match(layout, /active/);
   assert.match(layout, /Tous droits réservés/);
   assert.match(layout, /2020/);
+  assert.doesNotMatch(layout, /Pages Jaunes/i);
+  assert.doesNotMatch(layout, /pages-jaunes/i);
+  assert.doesNotMatch(layout, /Création de/i);
 });
 
-test('homepage recreates archived home content and specialties', () => {
+test('homepage recreates archived home content and specialties without non-real pictures', () => {
   const home = read('src/pages/index.astro');
   assert.match(home, /NOTRE SAVOIR-FAIRE AU SERVICE DE VOS PROJETS D'EXCAVATION/);
   assert.match(home, /Excavation Danguy Inc\., votre spécialiste en excavation à Sainte-Marie/);
   assert.match(home, /Excavation, terrassement et bien plus!/);
   assert.match(home, /Installations septiques éprouvées/);
   assert.match(home, /Vaste sélection de matériaux en vrac/);
+  assert.match(home, /class="service-visual excavation-visual"/);
+  assert.match(home, /class="service-visual materials-visual"/);
+  assert.doesNotMatch(home, /<img\b/i);
+  assert.doesNotMatch(home, /home-excavation|home-materials/i);
   for (const material of ['Pierre', 'Paillis', 'Terre', 'Sable', 'Compost', 'Fumier', 'Gravier', 'Concassé', 'Pierre décorative', 'Poussière de pierre']) {
     assert.match(home, new RegExp(material));
   }
@@ -65,12 +72,15 @@ test('homepage recreates archived home content and specialties', () => {
   }
 });
 
-test('services page recreates archived services, gallery, brands, and CTA', () => {
+test('services page recreates archived services with text panels instead of fake pictures', () => {
   const services = read('src/pages/services.astro');
   assert.match(services, /À Sainte-Marie, vos travaux d’excavation sont entre bonnes mains/);
   assert.match(services, /Nous sommes l’équipe qu’il vous faut!/);
-  for (const alt of ['bobcat', 'tombereau', 'Site de fouille', 'des roches', 'Tuyaux', 'aménagement paysager', 'gravier']) {
-    assert.match(services, new RegExp(`alt="${alt}"`));
+  assert.match(services, /class="service-panel-grid"/);
+  assert.doesNotMatch(services, /<img\b/i);
+  assert.doesNotMatch(services, /gallery-|brand-.*\.svg/i);
+  for (const panel of ['Excavation et terrassement', 'Centre de vrac', 'Drains, ponceaux et tuyaux', 'Installations septiques']) {
+    assert.match(services, new RegExp(panel));
   }
   for (const service of ['Aménagement de quais en pierre', 'Déneigement de cours commerciales et industrielles', 'Tuyaux et accessoires BNQ, SDR et autres', 'Location d’espaces extérieurs', 'Location de terrains']) {
     assert.match(services, new RegExp(service));
@@ -93,6 +103,15 @@ test('contact page recreates archived contact information and form', () => {
   assert.match(contact, /1425, rang Saint-Gabriel Nord/);
   assert.match(contact, /Ste-Marie, QC, G6E3A8/);
   assert.match(contact, /info@danguy.ca/);
+  for (const day of ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']) {
+    assert.match(contact, new RegExp(day));
+    assert.match(contact, /8\s*a\.m\.-12\s*p\.m\./);
+    assert.match(contact, /1-5\s*p\.m\./);
+  }
+  assert.match(contact, /Saturday/);
+  assert.match(contact, /Sunday/);
+  assert.match(contact, /Closed/);
+  assert.doesNotMatch(contact, /Heures variables durant la saison/);
   assert.match(contact, /Français/);
   assert.match(contact, /Sainte-Marie et les environs/);
 });

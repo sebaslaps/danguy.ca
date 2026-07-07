@@ -26,7 +26,7 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://danguy.ca').toString()
     <div class="top-strip">
       <div class="container top-strip-inner">
         <a class="mail-dot" href={`mailto:${site.email}`} aria-label="Envoyer un courriel">✉</a>
-        <span class="share-link">Tweet</span>
+        <span class="share-link">Excavation Danguy Inc.</span>
       </div>
     </div>
 
@@ -54,7 +54,7 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://danguy.ca').toString()
     <footer class="footer">
       <div class="container footer-inner">
         <p>Tous droits réservés <a href="/">Excavation Danguy Inc</a> 2020 - <span>Mention légale</span></p>
-        <p class="credit">Création de <img src="/assets/pages-jaunes.png" alt="Pages Jaunes Affaires" width="92" height="20" /></p>
+        <p>danguy.ca</p>
       </div>
     </footer>
   </body>
@@ -76,7 +76,7 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://danguy.ca').toString()
   .top-strip { background: #fff; height: 42px; border-bottom: 1px solid #f0f0f0; }
   .top-strip-inner { display: flex; align-items: center; justify-content: space-between; height: 42px; }
   .mail-dot { width: 27px; height: 27px; border-radius: 50%; background: #e8e8e8; color: #222; display: inline-grid; place-items: center; text-decoration: none; font-size: 13px; }
-  .share-link { color: #1c63c7; font-size: 12px; }
+  .share-link { color: #555; font-size: 12px; }
   .site-header { background: var(--yellow); min-height: 116px; }
   .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
   .brand-logo { display: flex; align-items: center; min-height: 116px; text-decoration: none; position: relative; }
@@ -106,8 +106,6 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://danguy.ca').toString()
   .footer { border-top: 1px solid var(--line); font-size: 12px; color: #333; padding: 20px 0; }
   .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
   .footer p { margin: 0; }
-  .credit { display: flex; align-items: center; gap: 8px; }
-  .credit img { display: inline-block; }
   @media (max-width: 760px) {
     .header-inner, .footer-inner { flex-direction: column; align-items: center; text-align: center; }
     .header-actions { align-items: center; width: 100%; }
