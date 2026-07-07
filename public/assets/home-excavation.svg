@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img" aria-label="Travaux d’excavation">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#f7f7f7"/><stop offset="1" stop-color="#e8e8e8"/></linearGradient>
+  </defs>
+  <rect width="760" height="420" fill="url(#sky)"/>
+  <rect y="285" width="760" height="135" fill="#7d6246"/>
+  <path d="M0 310c95-42 164-36 241-12s166 37 257-6 180-35 262 10v118H0z" fill="#5a4631" opacity=".55"/>
+  <g transform="translate(132 132)">
+    <path d="M68 168h278v38H68z" fill="#111"/>
+    <circle cx="108" cy="207" r="36" fill="#222"/><circle cx="108" cy="207" r="15" fill="#ffd400"/>
+    <circle cx="292" cy="207" r="36" fill="#222"/><circle cx="292" cy="207" r="15" fill="#ffd400"/>
+    <path d="M116 86h153l48 82H74z" fill="#ffd400" stroke="#111" stroke-width="12"/>
+    <path d="M165 44h86l18 42H124z" fill="#ffd400" stroke="#111" stroke-width="12"/>
+    <path d="M243 55l99-41 60 39" fill="none" stroke="#111" stroke-width="17" stroke-linecap="round"/>
+    <path d="M398 53l47 80" fill="none" stroke="#111" stroke-width="17" stroke-linecap="round"/>
+    <path d="M443 129l54 17-37 38z" fill="#111"/>
+    <path d="M196 97h56l28 62H196z" fill="#fff" opacity=".65"/>
+  </g>
+  <text x="38" y="374" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" fill="#fff">Travaux d’excavation</text>
+</svg>

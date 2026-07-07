@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const materials = ['Pierre', 'Paillis', 'Terre', 'Sable', 'Compost', 'Fumier', 'Gravier', 'Concassé', 'Pierre décorative', 'Poussière de pierre'];
+const specialties = ['Excavation', 'Terrassement', 'Installations septiques', 'Livraison de matériaux', 'Centre de vrac'];
+---
+<BaseLayout
+  title="Excavation Danguy Inc. | Excavation Sainte-Marie | Accueil"
+  description="Excavation Danguy Inc. offre des services d’excavation, terrassement, installations septiques et matériaux en vrac à Sainte-Marie."
+  active="/"
+>
+  <section class="home-hero" aria-labelledby="home-slogan">
+    <div class="container">
+      <p id="home-slogan" class="hero-title">NOTRE SAVOIR-FAIRE AU SERVICE DE VOS PROJETS D'EXCAVATION</p>
+      <div class="home-feature-grid">
+        <a class="feature-photo" href="/services/">
+          <img src="/assets/home-excavation.svg" alt="Travaux d’excavation | Notre offre de services s’étend de l’excavation aux travaux de terrassement." />
+        </a>
+        <a class="feature-card" href="/services/">
+          <img src="/assets/home-materials.png" alt="Matériaux en vrac | Nous vendons de la semence, des cœurs de portes, des ponceaux et bien plus." />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container content-narrow">
+      <h1>Excavation Danguy Inc., votre spécialiste en excavation à Sainte-Marie</h1>
+      <p class="lead-strong">Excavation, terrassement et bien plus!</p>
+      <p>Excavation Danguy Inc. offre une <a href="/services/">vaste gamme de services</a> dans le domaine de l’excavation résidentielle et commerciale, pour des travaux de petite envergure. Que ce soit pour de l’excavation, le terrassement, la démolition ou la livraison de matériaux, nous saurons vous donner un service et des conseils de qualité.</p>
+
+      <p class="lead-strong spaced">Installations septiques éprouvées</p>
+      <p>Nous sommes installateurs autorisés des produits Biofiltre Ecoflo de Premier Tech Aqua, du système Enviro Septic de DBO Expert Inc. et des installations septiques Bionest. Que ce soit pour le remplacement d’une installation existante ou pour une nouvelle construction, nous pourrons répondre à vos besoins en matière d’installation septique.</p>
+
+      <p class="lead-strong spaced">Vaste sélection de matériaux en vrac</p>
+      <p>Vous trouverez à notre centre de vrac, ouvert au public, plus de 45 choix de produits en vrac, tels que :</p>
+      <ul class="material-list">
+        {materials.map((material) => <li>{material}</li>)}
+      </ul>
+      <p>Il suffit de vous y présenter avec votre camionnette, votre remorque (« trailer ») ou vos chaudières. Semence, cœurs de porte et plusieurs choix de membranes géotextiles, vendus au pied ou en rouleau, vous sont également offerts. De plus, vous y trouverez des drains, des ponceaux, des tuyaux en polyéthylène haute densité (PEHD) et des tuyaux de tôle ondulée galvanisée (acier – TTOG). Plusieurs diamètres et longueurs sont disponibles en tout temps, dans le but de toujours mieux vous servir.</p>
+    </div>
+  </section>
+
+  <section class="yellow-band">
+    <div class="container">
+      <h2>Spécialités</h2>
+      <ul class="plain-list">
+        {specialties.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .home-hero { padding: 142px 0 138px; background: #fff; }
+  .hero-title {
+    color: var(--yellow);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2.35rem, 5.9vw, 4.2rem);
+    line-height: 1.08;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .01em;
+    text-shadow: 4px 6px 7px rgba(0,0,0,.58);
+    max-width: 910px;
+    margin: 0 auto 66px;
+  }
+  .home-feature-grid { display: grid; grid-template-columns: minmax(0, 1fr) 264px; gap: 34px; align-items: center; }
+  .feature-photo, .feature-card { display: block; text-decoration: none; }
+  .feature-photo img { width: 100%; min-height: 264px; object-fit: cover; display: block; }
+  .feature-card img { width: 264px; height: 264px; display: block; }
+  .spaced { margin-top: 28px; }
+  .material-list { columns: 2; max-width: 520px; margin: 0 0 22px 20px; padding: 0; }
+  .material-list li { margin: 4px 0; }
+  @media (max-width: 760px) {
+    .home-hero { padding: 72px 0; }
+    .home-feature-grid { grid-template-columns: 1fr; }
+    .feature-card img { width: 100%; max-width: 264px; margin: 0 auto; }
+    .material-list { columns: 1; }
+  }
+</style>

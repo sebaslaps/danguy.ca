@@ -1,0 +1,119 @@
+---
+import site from '../data/site.json';
+
+const {
+  title = 'Excavation Danguy Inc.',
+  description = 'Excavation, terrassement, installations septiques et matériaux en vrac à Sainte-Marie.',
+  active = '/',
+} = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, 'https://danguy.ca').toString();
+---
+<!doctype html>
+<html lang="fr-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <div class="top-strip">
+      <div class="container top-strip-inner">
+        <a class="mail-dot" href={`mailto:${site.email}`} aria-label="Envoyer un courriel">✉</a>
+        <span class="share-link">Tweet</span>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand-logo" href="/" aria-label="DANGUY EXCAVATION accueil">
+          <img src="/assets/logo-header.png" alt="Danguy Excavation" width="275" height="95" />
+          <span class="brand-fallback"><strong>DANGUY</strong><em>EXCAVATION</em></span>
+        </a>
+        <div class="header-actions">
+          <a class="phone" href={`tel:${site.phone.href}`}>{site.phone.display}</a>
+          <nav aria-label="Navigation principale">
+            {site.navigation.map((item) => (
+              <a href={item.href} class:list={[{ active: active === item.href }, 'nav-link']}>{item.label}</a>
+            ))}
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>Tous droits réservés <a href="/">Excavation Danguy Inc</a> 2020 - <span>Mention légale</span></p>
+        <p class="credit">Création de <img src="/assets/pages-jaunes.png" alt="Pages Jaunes Affaires" width="92" height="20" /></p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --yellow: #ffd400;
+    --black: #000000;
+    --text: #5f5f5f;
+    --muted: #777777;
+    --line: #eeeeee;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; color: var(--text); background: #fff; font-size: 16px; line-height: 1.55; }
+  a { color: inherit; }
+  .container { width: min(940px, calc(100% - 32px)); margin: 0 auto; }
+  .top-strip { background: #fff; height: 42px; border-bottom: 1px solid #f0f0f0; }
+  .top-strip-inner { display: flex; align-items: center; justify-content: space-between; height: 42px; }
+  .mail-dot { width: 27px; height: 27px; border-radius: 50%; background: #e8e8e8; color: #222; display: inline-grid; place-items: center; text-decoration: none; font-size: 13px; }
+  .share-link { color: #1c63c7; font-size: 12px; }
+  .site-header { background: var(--yellow); min-height: 116px; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+  .brand-logo { display: flex; align-items: center; min-height: 116px; text-decoration: none; position: relative; }
+  .brand-logo img { display: block; max-width: 275px; height: auto; }
+  .brand-fallback { position: absolute; opacity: 0; pointer-events: none; }
+  .brand-fallback strong { display:block; font-weight: 900; letter-spacing: .04em; }
+  .brand-fallback em { display:block; font-style: normal; letter-spacing: .34em; }
+  .header-actions { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; }
+  .phone { display: block; margin: 18px 0 18px; color: #000; font-size: 21px; font-weight: 800; text-decoration: none; }
+  nav { display: flex; align-items: stretch; }
+  .nav-link { color: #000; text-decoration: none; padding: 18px 22px; font-weight: 700; display: inline-flex; align-items: center; }
+  .nav-link.active { background: #000; color: var(--yellow); }
+  h1, h2, h3 { color: #111; line-height: 1.2; }
+  h1 { font-size: 26px; margin: 0 0 18px; }
+  h2 { font-size: 24px; margin: 0 0 22px; }
+  p { margin: 0 0 15px; }
+  .page-section { padding: 58px 0; }
+  .content-narrow { max-width: 900px; margin: 0 auto; }
+  .lead-strong { font-weight: 700; color: #626262; }
+  .yellow-band { background: var(--yellow); color: #000; text-align: center; padding: 55px 0; }
+  .yellow-band h2 { color: #000; }
+  .plain-list { margin: 0; padding: 0; list-style: none; font-weight: 700; color: #111; }
+  .plain-list li { margin: 6px 0; }
+  .black-cta { background: #000; color: #fff; text-align: center; padding: 46px 20px; }
+  .black-cta h2 { color: #fff; }
+  .button-yellow { background: var(--yellow); color: #000; text-decoration: none; border: 0; display: inline-block; padding: 13px 28px; font-weight: 800; cursor: pointer; }
+  .footer { border-top: 1px solid var(--line); font-size: 12px; color: #333; padding: 20px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+  .footer p { margin: 0; }
+  .credit { display: flex; align-items: center; gap: 8px; }
+  .credit img { display: inline-block; }
+  @media (max-width: 760px) {
+    .header-inner, .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+    .header-actions { align-items: center; width: 100%; }
+    nav { flex-wrap: wrap; justify-content: center; }
+    .nav-link { padding: 14px 16px; }
+    .brand-logo { min-height: 96px; }
+    .phone { margin-top: 0; }
+  }
+</style>

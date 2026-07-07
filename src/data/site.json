@@ -1,0 +1,20 @@
+{
+  "name": "Excavation Danguy Inc.",
+  "domain": "danguy.ca",
+  "phone": {
+    "display": "418-387-6746",
+    "href": "+14183876746"
+  },
+  "email": "info@danguy.ca",
+  "address": {
+    "street": "1425, rang Saint-Gabriel Nord",
+    "city": "Ste-Marie",
+    "province": "QC",
+    "postalCode": "G6E3A8"
+  },
+  "navigation": [
+    { "label": "Accueil", "href": "/" },
+    { "label": "Services", "href": "/services/" },
+    { "label": "Contactez-nous", "href": "/contactez-nous/" }
+  ]
+}

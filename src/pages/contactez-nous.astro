@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+---
+<BaseLayout
+  title="Excavation Danguy Inc.| Sainte-Marie | Contactez-nous"
+  description="Contactez Excavation Danguy Inc. à Sainte-Marie pour des travaux d’excavation, terrassement, démolition et matériaux en vrac."
+  active="/contactez-nous/"
+>
+  <section class="page-section contact-page">
+    <div class="container contact-grid">
+      <div class="contact-main">
+        <h1>Appelez Excavation Danguy Inc. à Sainte-Marie pour des travaux durables</h1>
+        <p class="lead-strong">Des travaux exécutés dans les règles de l’art</p>
+        <p>Avez-vous besoin d’effectuer des travaux d’excavation, de terrassement ou de démolition sur votre terrain résidentiel ou commercial? Vous êtes à la bonne place. L’équipe d’Excavation Danguy Inc. se charge de tout en prenant soin de respecter vos exigences et votre budget. Demandez votre soumission dès aujourd’hui en composant le <a href={`tel:${site.phone.href}`}>{site.phone.display}</a> ou en remplissant le formulaire suivant.</p>
+
+        <form name="contact" method="post" action="mailto:info@danguy.ca">
+          <label>
+            <span>Nom*</span>
+            <input type="text" name="nom" placeholder="Nom*" required />
+          </label>
+          <label>
+            <span>Numéro de téléphone*</span>
+            <input type="tel" name="telephone" placeholder="Numéro de téléphone*" required />
+          </label>
+          <label>
+            <span>Adresse courriel*</span>
+            <input type="email" name="courriel" placeholder="Adresse courriel*" required />
+          </label>
+          <label>
+            <span>Commentaires*</span>
+            <textarea name="commentaires" placeholder="Commentaires*" rows="7" required></textarea>
+          </label>
+          <button class="button-yellow" type="submit">Envoyer</button>
+        </form>
+      </div>
+
+      <aside class="contact-info" aria-label="Coordonnées">
+        <p class="info-title">Téléphone</p>
+        <p><a href={`tel:${site.phone.href}`}>{site.phone.display}</a></p>
+
+        <p class="info-title">Adresse</p>
+        <p>1425, rang Saint-Gabriel Nord,</p>
+        <p>Ste-Marie, QC, G6E3A8</p>
+
+        <p class="info-title">Courriel</p>
+        <p><a href="mailto:info@danguy.ca">info@danguy.ca</a></p>
+
+        <p class="info-title">Heures d'ouverture</p>
+        <p>Heures variables durant la saison. Veuillez communiquer avec le bureau au <a href={`tel:${site.phone.href}`}>{site.phone.display}</a> pour connaître nos heures d’ouverture.</p>
+
+        <h2>Langues parlées</h2>
+        <p>Français</p>
+
+        <h2>Zone de service</h2>
+        <p>Sainte-Marie et les environs</p>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-page { padding-top: 82px; padding-bottom: 82px; }
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 54px; align-items: start; }
+  form { margin-top: 28px; max-width: 540px; }
+  label { display: block; margin: 0 0 15px; color: #333; font-weight: 700; }
+  label span { display: block; margin-bottom: 5px; }
+  input, textarea { width: 100%; border: 1px solid #d7d7d7; padding: 12px 13px; font: inherit; color: #222; background: #fff; }
+  textarea { resize: vertical; }
+  button.button-yellow { margin-top: 8px; }
+  .contact-info { border-left: 6px solid var(--yellow); padding-left: 24px; }
+  .info-title { color: #111; font-weight: 800; margin-top: 24px; margin-bottom: 4px; }
+  .info-title:first-child { margin-top: 0; }
+  .contact-info h2 { margin-top: 34px; margin-bottom: 8px; }
+  @media (max-width: 760px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-info { border-left: 0; border-top: 6px solid var(--yellow); padding-left: 0; padding-top: 24px; }
+  }
+</style>

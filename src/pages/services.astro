@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const gallery = [
+  ['bobcat', '/assets/gallery-bobcat.svg'],
+  ['tombereau', '/assets/gallery-tombereau.svg'],
+  ['Site de fouille', '/assets/gallery-fouille.svg'],
+  ['des roches', '/assets/gallery-roches.svg'],
+  ['Tuyaux', '/assets/gallery-tuyaux.svg'],
+  ['aménagement paysager', '/assets/gallery-amenagement.svg'],
+  ['gravier', '/assets/gallery-gravier.svg'],
+];
+
+const services = [
+  'Excavation',
+  'Terrassement',
+  'Installations septiques',
+  'Aménagement de quais en pierre',
+  'Démolition',
+  'Livraison de matériaux',
+  'Déneigement de cours commerciales et industrielles',
+  'Matériaux en vrac',
+  'Drains et ponceaux',
+  'Tuyaux et accessoires BNQ, SDR et autres',
+  'Membranes géotextiles',
+  'Semence',
+  'Cœurs de porte',
+  'Location d’espaces extérieurs',
+  'Location de terrains',
+];
+
+const brands = [
+  ['Biofiltre Ecoflo', '/assets/brand-ecoflo.svg'],
+  ['Bionest', '/assets/brand-bionest.svg'],
+  ['Enviro Septic', '/assets/brand-enviroseptic.svg'],
+];
+---
+<BaseLayout
+  title="Installations septiques Sainte-Marie | Services | Excavation Danguy Inc."
+  description="Services d’excavation, terrassement, installations septiques, livraison de matériaux, drains, ponceaux et matériaux en vrac à Sainte-Marie."
+  active="/services/"
+>
+  <section class="gallery-section" aria-label="Galerie de services">
+    <div class="container gallery-grid">
+      <a href="#services" class="gallery-card"><img src="/assets/gallery-bobcat.svg" alt="bobcat" loading="lazy" /></a>
+      <a href="#services" class="gallery-card"><img src="/assets/gallery-tombereau.svg" alt="tombereau" loading="lazy" /></a>
+      <a href="#services" class="gallery-card"><img src="/assets/gallery-fouille.svg" alt="Site de fouille" loading="lazy" /></a>
+      <a href="#services" class="gallery-card"><img src="/assets/gallery-roches.svg" alt="des roches" loading="lazy" /></a>
+      <a href="#services" class="gallery-card"><img src="/assets/gallery-tuyaux.svg" alt="Tuyaux" loading="lazy" /></a>
+      <a href="#services" class="gallery-card"><img src="/assets/gallery-amenagement.svg" alt="aménagement paysager" loading="lazy" /></a>
+      <a href="#services" class="gallery-card"><img src="/assets/gallery-gravier.svg" alt="gravier" loading="lazy" /></a>
+    </div>
+  </section>
+
+  <section class="page-section intro-services">
+    <div class="container content-narrow">
+      <h1>À Sainte-Marie, vos travaux d’excavation sont entre bonnes mains</h1>
+      <p class="lead-strong">Nous sommes l’équipe qu’il vous faut!</p>
+      <p>Chez Excavation Danguy Inc., votre satisfaction est notre priorité. C’est pourquoi nous nous engageons à vous offrir des services, des travaux et des conseils de qualité. Voyez quelques images de notre centre de vrac et de nos installations afin de mieux percevoir notre environnement de travail. Vous avez des questions? <a href="tel:+14183876746">Appelez-nous dès aujourd’hui.</a></p>
+    </div>
+  </section>
+
+  <section id="services" class="yellow-band services-list-section">
+    <div class="container">
+      <h2>Services</h2>
+      <ul class="plain-list">
+        {services.map((service) => <li>{service}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="page-section brands-section">
+    <div class="container">
+      <h2>Marques</h2>
+      <div class="brand-grid">
+        {brands.map(([alt, src]) => <img src={src} alt={alt} loading="lazy" />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="black-cta">
+    <div class="container">
+      <h2>Installations septiques</h2>
+      <p>Nous faisons affaire avec des marques reconnues d’installations septiques.</p>
+      <a class="button-yellow" href="/contactez-nous/">Venez nous voir</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .gallery-section { padding: 68px 0 48px; background: #fff; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; align-items: center; }
+  .gallery-card { display: block; text-decoration: none; }
+  .gallery-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; box-shadow: 0 1px 0 rgba(0,0,0,.08); }
+  .intro-services { padding-top: 38px; }
+  .services-list-section { padding: 54px 0 60px; }
+  .brands-section { text-align: center; background: #fff; }
+  .brand-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; align-items: center; margin-top: 24px; }
+  .brand-grid img { max-width: 210px; width: 100%; margin: 0 auto; display: block; }
+  @media (max-width: 760px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .brand-grid { grid-template-columns: 1fr; }
+  }
+</style>
