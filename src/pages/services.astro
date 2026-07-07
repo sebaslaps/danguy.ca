@@ -5,7 +5,7 @@ const panels = [
   ['Excavation et terrassement', 'Travaux résidentiels et commerciaux de petite envergure, préparation de terrain, nivellement et finition.'],
   ['Centre de vrac', 'Pierre, sable, paillis, terre, compost, gravier, concassé et autres matériaux disponibles au public.'],
   ['Drains, ponceaux et tuyaux', 'Tuyaux et accessoires BNQ, SDR et autres, membranes géotextiles, drains et ponceaux.'],
-  ['Installations septiques', 'Produits Biofiltre Ecoflo, Bionest et Enviro Septic selon les besoins du projet.'],
+  ['Installations septiques', 'Solutions septiques adaptées aux besoins du projet et aux conditions du terrain.'],
 ];
 
 const services = [
@@ -26,7 +26,6 @@ const services = [
   'Location de terrains',
 ];
 
-const brands = ['Biofiltre Ecoflo', 'Bionest', 'Enviro Septic'];
 ---
 <BaseLayout
   title="Installations septiques Sainte-Marie | Services | Excavation Danguy Inc."
@@ -61,19 +60,10 @@ const brands = ['Biofiltre Ecoflo', 'Bionest', 'Enviro Septic'];
     </div>
   </section>
 
-  <section class="page-section brands-section">
-    <div class="container">
-      <h2>Marques</h2>
-      <div class="brand-grid" aria-label="Marques d'installations septiques">
-        {brands.map((brand) => <span class="brand-name">{brand}</span>)}
-      </div>
-    </div>
-  </section>
-
   <section class="black-cta">
     <div class="container">
       <h2>Installations septiques</h2>
-      <p>Nous faisons affaire avec des marques reconnues d’installations septiques.</p>
+      <p>Contactez-nous pour discuter de votre projet d’installation septique et des options adaptées à votre terrain.</p>
       <a class="button-yellow" href="/contactez-nous/">Venez nous voir</a>
     </div>
   </section>
@@ -89,11 +79,7 @@ const brands = ['Biofiltre Ecoflo', 'Bionest', 'Enviro Septic'];
   .service-panel:nth-child(even) .panel-text { color: #222; }
   .intro-services { padding-top: 38px; }
   .services-list-section { padding: 54px 0 60px; }
-  .brands-section { text-align: center; background: #fff; }
-  .brand-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: stretch; margin-top: 24px; }
-  .brand-name { display: grid; place-items: center; min-height: 86px; border: 2px solid #111; background: #fff; color: #111; font-weight: 900; font-size: 1.2rem; }
   @media (max-width: 760px) {
     .service-panel-grid { grid-template-columns: 1fr; }
-    .brand-grid { grid-template-columns: 1fr; }
   }
 </style>

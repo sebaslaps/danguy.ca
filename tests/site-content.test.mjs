@@ -88,9 +88,12 @@ test('services page recreates archived services with text panels instead of fake
   for (const service of ['Aménagement de quais en pierre', 'Déneigement de cours commerciales et industrielles', 'Tuyaux et accessoires BNQ, SDR et autres', 'Location d’espaces extérieurs', 'Location de terrains']) {
     assert.match(services, new RegExp(service));
   }
-  for (const brand of ['Biofiltre Ecoflo', 'Bionest', 'Enviro Septic']) {
-    assert.match(services, new RegExp(brand));
-  }
+  assert.doesNotMatch(services, /<h2>Marques<\/h2>/);
+  assert.doesNotMatch(services, /class="brands-section"/);
+  assert.doesNotMatch(services, /class="brand-grid"/);
+  assert.doesNotMatch(services, /class="brand-name"/);
+  assert.doesNotMatch(services, /Biofiltre Ecoflo|Bionest|Enviro Septic/);
+  assert.doesNotMatch(services, /marques reconnues/i);
   assert.match(services, /Venez nous voir/);
 });
 
